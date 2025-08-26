@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            background-color: none;
+            border: none;
+            padding: 0;
+            font-size: inherit;
+            cursor: pointer;
+            color: blueviolet;
+        }
+
+        button:hover {
+            color: rgb(86, 86, 83)
+        }
+
+        #navigationbar {
+
+            display: flex;
+
+            justify-content: space-between;
+            font-size: large;
+            z-index: 1000;
+            box-shadow: 0 2px 4px;
+            top: 0;
+            padding: 10px 20px;
+            color: azure;
+            position: sticky;
+            font: sans-serif;
+
+        }
+
+        .grid {
+            width: 19em;
+            padding-top: 10px;
+            box-shadow: 0 5px 15px;
+            align-items: center;
+            justify-content: center;
+            margin-left: 2em;
+            margin-top: 3em;
+            padding-bottom: 2%;
+            text-align: center;
+            border: 1px solid;
+            color: blueviolet;
+
+
+        }
+
+        .textg {
+            margin-bottom: 10px;
+            color: rgb(132, 132, 131);
+            font-style: sans-serif;
+        }
+
+        img {
+            height: 12vh;
+            border-radius: 50%;
+            width: 12vh;
+            margin-bottom: 15px;
+            object-fit: cover;
+            border: 1px solid;
+            box-shadow: 0 0 15px;
+
+        }
+
+        h1 {
+            margin: 2em 5em;
+            color: rgb(132, 132, 131);
+        }
+
+        #container {
+            background-color: rgb(237, 241, 241);
+            font: 1em sans-serif;
+            margin: auto;
+            width: 90%;
+            max-width: 1200px;
+            
+            
+            
+
+    
+        }
+
+        .grid2 {
+            width: 19em;
+            align-items: center;
+            justify-content: center;
+            margin-left: 30em;
+        float: inline-start;
+            margin-bottom: 10vh;
+            text-align: center;
+
+            
+            
+
+        }
+
+        #hire {
+            border: 1px solid blueviolet;
+            align-items: center;
+        }
+
+        h3 {
+            font-variant: small-caps;
+        }
+
+        p {
+            color: rgb(132, 132, 131);
+        }
+
+        @media (max-width:768px) {
+            .container {
+                width: 90%;
+                justify-content: center;
+
+            }
+        }
+    </style>
+</head>
+
+<body id="container">
+    <nav id="navigationbar">
+        <button id="home" onclick="window.location.href='portfolio.html'">Home</button>
+        <button id="project" onclick="window.location.href='project.html'">projects</button>
+        <button id="about" onclick="window.location.href='about.html'">About</button>
+        <button id="contact" onclick="window.location.href='contact.html'">contact</button>
+    </nav>
+    <h1>About</h1>
+    <div class="grid">
+        <img src="profile.jpg">
+        <p class="textg">Lorem ipsum dolor, sit amet consectetur adipisicing elit. <br>
+            Ab debitis atque provident. Fugit facilis repellat,<br>
+            <br>
+        </p>
+        <h3>ugo precious</h3>
+        <p>CEO of Nova-corp</p>
+        <div class="grid2">
+            <p class="text">
+                html Lorem ipsum dolor sit amet consectetur <br>
+                adipisicing elit. Reiciendis sunt, aperiam voluptatem, <br>doloribus officia cumque possimus delectus
+                illum iste <br>
+                architecto temporibus aliquid nisi nobis,
+                <br>saepe molestiae quo voluptates ducimus quas.
+            </p>
+            <button id="dr">Download Resume</button>
+            <button id="hire" onclick="window.location.href='https://wa.me/2347076135787'">Get In Touch
+            </button>
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>

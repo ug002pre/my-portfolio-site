@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            background-color: none;
+            border: none;
+            padding: 0;
+            font-size: inherit;
+            cursor: pointer;
+            color: blueviolet;
+        }
+
+        button:hover {
+            color: rgb(86, 86, 83)
+        }
+
+        #navigationbar {
+
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            font-size: large;
+            z-index: 1000;
+            box-shadow: 0 2px 4px;
+            top: 0;
+            padding: 10px 20px;
+            color: rgba(0, 0, 0, 0.1);
+            position: sticky;
+            font: sans-serif;
+
+        }
+
+        #container {
+            background-color: rgb(237, 241, 241);
+            font: 1em sans-serif;
+            margin: auto;
+            width: 90%;
+            max-width: 1200px;
+        }
+
+
+
+        #btn {
+            border: 1% solid;
+            cursor: pointer;
+            padding: 1% 2%;
+            border-radius: 3%;
+            background-color: blueviolet;
+            margin-left: 7%;
+            color: rgb(237, 241, 241);
+
+        }
+
+        #lay {
+    margin-left:  3%;
+        }
+
+        #name {
+            margin-bottom: 5px;
+            margin-left: 5%;
+            width: 15rem;
+        }
+
+
+        #email {
+            margin-bottom: 5px;
+            margin-left: 5%;
+            width: 15rem;
+           
+        }
+
+
+        #message {
+            margin-bottom: 5px;
+            margin-left: 5%;
+            padding: 2em  4em 5em;
+
+        }
+
+        p {
+            color: rgb(132, 132, 131);
+        }
+        a{
+            color: blueviolet;
+        }
+
+        @media(max-width:768px) {
+            .container {
+                width: 90px;
+            }
+        }
+    </style>
+</head>
+
+<body id="container">
+    <nav id="navigationbar">
+        <button id="home" onclick="window.location.href='portfolio.html'">Home</button>
+        <button id="project" onclick="window.location.href='project.html'">projects</button>
+        <button id="about" onclick="window.location.href='about.html'">About</button>
+        <button id="contact" onclick="window.location.href='contact.html'">contact</button>
+    </nav>
+    <div id="lay">
+
+        <Section id="contact-">
+            <form action="" method="post">
+                <h2 id="text">contact</h2>
+                <input type="text" id="name" placeholder="Name">
+                <br>
+                <input type="text" id="email" placeholder="Email">
+                <br>
+                <textarea id="message" placeholder="message"></textarea>
+                <br>
+                <button type="submit" id="btn">Send</button>
+            </form>
+<br>
+<br>
+<br>
+            <h2 id="st">For Hire/Inquiry</h2>
+            <p> For more enquiry, you can also contact me on the following  <br>
+               platforms as you so desire. </p> <br>
+            <br>
+            <a href="preciouskwubeghari@gmail.com">preciouskwubeghari@gmail.com</a>
+            <br>
+            <br>
+            <a href="+2347076135787">+2347076135787</a>
+<br>
+<br>
+<a href="@kwubegharip">x: @kwubegharip</a>
+
+        </Section>
+
+    </div>
+</body>
+<script>
+
+</script>
+
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container {
+            background-color: rgb(237, 241, 241);
+            font: 1em sans-serif;
+            margin: auto;
+            width: 90%;
+            max-width: 1200px;
+        }
+
+        #navigationbar {
+
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            font-size: large;
+            z-index: 1000;
+            box-shadow: 0 2px 4px;
+            top: 0;
+            padding: 10px 20px;
+            color: rgba(0, 0, 0, 0.1);
+            position: sticky;
+            font: sans-serif;
+
+
+
+
+        }
+
+        .logo {
+            display: grid;
+            align-items: center;
+
+            padding: 25px;
+            block-size: 4cap;
+            font-variant: small-caps;
+
+
+        }
+
+        button {
+            background-color: none;
+            border: none;
+            padding: 0;
+            font-size: inherit;
+            cursor: pointer;
+            color: blueviolet;
+
+        }
+
+        button:hover {
+            color: rgb(86, 86, 83)
+        }
+
+        h2 {
+            color: blueviolet;
+        }
+
+        p {
+            font-size: inherit;
+            margin-left: 30px;
+            color: rgb(132, 132, 131);
+            max-width: 400px;
+        }
+
+        h2 {
+            margin-left: 30px;
+        }
+
+        img {
+            display: grid;
+            flex-wrap: wrap;
+            width: 30%;
+            border-radius: 100px;
+            float: right;
+            margin-right: 15%;
+            position: relative;
+            bottom: 19em;
+            border: 4px solid;
+            color: #981be6;
+            height: auto;
+            object-fit: cover;
+            box-shadow: 0 0 15px;
+
+
+        }
+
+        #btr {
+            background-color: blueviolet;
+            border-radius: 10px;
+            color: azure;
+
+
+
+        }
+
+        #btr:hover {
+            color: rgb(46, 46, 45)
+        }
+
+        #btg {
+
+            border: 2px solid;
+            padding: 1% 1.6rem;
+            border-radius: 10px;
+        }
+
+        .underbtn {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 2rem 1.5rem;
+            margin-top: 1.5rem;
+            white-space: nowrap;
+            flex-wrap: wrap;
+            position: absolute;
+
+
+        }
+
+        @media (max-width:768px) {
+            .container {
+                width: 90px;
+
+            }
+        }
+    </style>
+</head>
+
+<body id="container">
+
+    <nav id="navigationbar">
+        <button id="home" onclick="window.location.href='portfolio.html'">Home</button>
+        <button id="project" onclick="window.location.href='project.html'">projects</button>
+        <button id="about" onclick="window.location.href='about.html'">About</button>
+        <button id="contact" onclick="window.location.href='contact.html'">contact</button>
+    </nav>
+    <br>
+    <div class="logo">Nova-corp</div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+
+    <p>Hi there am ugo
+    </p>
+    <h2>Frontend & <br>
+        mobile app developer</h2>
+    <p>I develop mobile app for both <br>
+        ios and android operating systems with <br>
+        elegant and functional frontends</p>
+    <img src="profile.jpg">
+    <p id="nt">Feel free to explore my portfolio and reach out,<br>I'd love to connect
+    </p>
+    <div class="underbtn">
+        <button id="btr">book a call</button> <button id="btg" onclick="window.location.href='project.html'">Get
+            started</button>
+    </div>
+
+
+    <script>
+
+
+    </script>
+</body>
+
+</html>

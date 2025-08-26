@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #navigationbar{
+display: flex;
+flex-wrap: nowrap;
+justify-content: space-between;
+font-size: large;
+z-index:1000;
+box-shadow: 0 2px 4px;
+top:0;
+padding: 10px 20px;
+color: rgba(0, 0, 0,0.1 );
+position: sticky;
+font:  sans-serif;
+        }
+        button{
+    background-color: none;
+    border:none;
+    padding: 0;
+font-size: inherit;
+    cursor: pointer;
+    color: blueviolet;
+}
+button:hover{
+    color: rgb(86, 86, 83)
+}
+#container{
+            background-color: rgb(237, 241, 241);
+font: 1em sans-serif;
+margin: auto;
+width: 90%;
+max-width: 1200px;
+        }
+        h2{
+            margin-left:22em ;
+            font-variant:small-caps ;
+        }
+
+        @media ( max-width:768px){
+            #container{
+            width: 90px;
+            }
+        }
+
+    </style>
+</head>
+<body id="container">
+    <nav id="navigationbar">
+        <button id="home" onclick="window.location.href='portfolio.html'">Home</button> 
+        <button id="project" onclick="window.location.href='project.html'">projects</button>
+        <button id="about" onclick="window.location.href='about.html'">About</button>
+        <button id="contact" onclick="window.location.href='contact.html'">contact</button>
+        </nav>
+        <br>
+        <br>
+
+        <h2>My work</h2>
+        
+            <img src="domy1.jpeg" >
+
+        <img src="domy2.png" >
+
+
+
+
+
+
+</body>
+<script>
+    
+</script>
+</html>
