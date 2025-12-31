@@ -1,0 +1,27 @@
+{
+  "name": "my-portfolio-site",
+  "version": "1.0.0",
+  "type":"module",
+  "scripts": {
+    "start": "node emailer.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ug002pre/my-portfolio-site.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ug002pre/my-portfolio-site/issues"
+  },
+  "homepage": "https://github.com/ug002pre/my-portfolio-site#readme",
+  "dependencies": {
+    "@emailjs/nodejs": "^5.0.2",
+    "body-parser": "^2.2.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "nodemailer": "^7.0.9"
+  }
+}

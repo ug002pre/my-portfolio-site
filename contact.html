@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
         button {
             background-color: none;
@@ -12,7 +14,9 @@
             padding: 0;
             font-size: inherit;
             cursor: pointer;
-            color: blueviolet;
+            color: #0bf794;
+            background-color: rgb(1, 36, 36);
+            ;
         }
 
         button:hover {
@@ -26,23 +30,28 @@
             justify-content: space-between;
             font-size: large;
             z-index: 1000;
-            box-shadow: 0 2px 4px;
+            box-shadow: 0 4px 6px;
             top: 0;
             padding: 10px 20px;
-            color: rgba(0, 0, 0, 0.1);
+
             position: sticky;
             font: sans-serif;
 
         }
 
         #container {
-            background-color: rgb(237, 241, 241);
+            background-color: rgb(1, 36, 36);
             font: 1em sans-serif;
             margin: auto;
             width: 90%;
             max-width: 1200px;
         }
 
+        .iconB {
+            display: flex;
+            justify-content: space-around;
+            text-shadow: 0 0 10px #0ff;
+        }
 
 
         #btn {
@@ -50,43 +59,68 @@
             cursor: pointer;
             padding: 1% 2%;
             border-radius: 3%;
-            background-color: blueviolet;
+            background-color: #0bf794;
             margin-left: 7%;
-            color: rgb(237, 241, 241);
+            color: rgb(1, 36, 29);
+            
 
         }
 
-        #lay {
-    margin-left:  3%;
+        #contact-form {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #0bf794;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #0ff;
+
         }
 
         #name {
             margin-bottom: 5px;
-            margin-left: 5%;
-            width: 15rem;
+            margin-left: -2%;
+            width: 19em;
+            padding: 10px 15px;
+            border-radius: 5px;
         }
-
 
         #email {
             margin-bottom: 5px;
-            margin-left: 5%;
-            width: 15rem;
-           
+            margin-left: -2%;
+            width: 19em;
+            padding: 10px 15px;
+            border-radius: 5px;
         }
 
+        #st {
+            color: #0bf794;
+            ;
+        }
+        #text {
+            color: #0bf794;
+        }
 
         #message {
             margin-bottom: 5px;
-            margin-left: 5%;
-            padding: 2em  4em 5em;
-
+            margin-left: -2%;
+            padding: 2em 4em 5em;
+            width: 15em;
+            border-radius: 5px;
         }
 
         p {
-            color: rgb(132, 132, 131);
+            color: white;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         }
-        a{
-            color: blueviolet;
+
+        a {
+            color: #0bf794;
+        }
+
+        i {
+            color: #0bf794;
+            font-size: 1.90em;
+
         }
 
         @media(max-width:768px) {
@@ -104,40 +138,65 @@
         <button id="about" onclick="window.location.href='about.html'">About</button>
         <button id="contact" onclick="window.location.href='contact.html'">contact</button>
     </nav>
-    <div id="lay">
+    <div id="contact-form">
 
-        <Section id="contact-">
-            <form action="" method="post">
-                <h2 id="text">contact</h2>
+        <Section>
+            <form action="/send-email" method="post">
+                <h2 id="text">Email me</h2>
                 <input type="text" id="name" placeholder="Name">
                 <br>
-                <input type="text" id="email" placeholder="Email">
+                <input type="email" id="email" placeholder="Email">
                 <br>
                 <textarea id="message" placeholder="message"></textarea>
                 <br>
                 <button type="submit" id="btn">Send</button>
             </form>
-<br>
-<br>
-<br>
+            <br>
+            <br>
+            <br>
             <h2 id="st">For Hire/Inquiry</h2>
-            <p> For more enquiry, you can also contact me on the following  <br>
-               platforms as you so desire. </p> <br>
+            <p> For more enquiry, you can also contact me on the following <br>
+                platforms as you so desire. </p> <br>
             <br>
-            <a href="preciouskwubeghari@gmail.com">preciouskwubeghari@gmail.com</a>
-            <br>
-            <br>
-            <a href="+2347076135787">+2347076135787</a>
-<br>
-<br>
-<a href="@kwubegharip">x: @kwubegharip</a>
+            <div class="iconB">
+                <i class="fa-brands fa-twitter" onclick="window.location.href='https://x.com/KwubeghariP'"></i>
+                <i class="fa-brands fa-github" onclick="window.location.href='https://github.com/ug002pre'"></i> 
+                <i class="fa-brands fa-facebook" onclick="window.location.href='https://www.facebook.com/profile.php?id=100076375631426'"></i> 
+                   <i class="fa-brands fa-whatsapp" onclick="window.location.href='https://wa.me/07076135787'"></i>
 
+            </div>
         </Section>
 
     </div>
+    
+
 </body>
-<script>
+<script type="module" >
+    document.getElementById('contact-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = {
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      message: document.getElementById('message').value,
+    };
+
+    try {
+      const response = await fetch('/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+      alert(result.message); // or show in UI
+      if (result.success) e.target.reset();
+    } catch (err) {
+      alert('Network error - is the server running?');
+    }
+});
 
 </script>
+
 
 </html>

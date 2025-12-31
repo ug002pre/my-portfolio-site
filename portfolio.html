@@ -7,12 +7,12 @@
     <title>Document</title>
     <style>
         #container {
-            background-color: rgb(237, 241, 241);
+            background-color:rgb(1, 36, 36);
             font: 1em sans-serif;
             margin: auto;
             width: 90%;
             max-width: 1200px;
-        }
+       }
 
         #navigationbar {
 
@@ -27,10 +27,6 @@
             color: rgba(0, 0, 0, 0.1);
             position: sticky;
             font: sans-serif;
-
-
-
-
         }
 
         .logo {
@@ -40,7 +36,7 @@
             padding: 25px;
             block-size: 4cap;
             font-variant: small-caps;
-
+            color: #fff;
 
         }
 
@@ -50,8 +46,8 @@
             padding: 0;
             font-size: inherit;
             cursor: pointer;
-            color: blueviolet;
-
+            color: #0bf794;
+            background-color: rgb(1, 36, 29);
         }
 
         button:hover {
@@ -59,18 +55,25 @@
         }
 
         h2 {
-            color: blueviolet;
+            color: #0bf794;
         }
 
         p {
-            font-size: inherit;
+            font-size: larger;
             margin-left: 30px;
-            color: rgb(132, 132, 131);
             max-width: 400px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            color: white;
+
         }
 
-        h2 {
+        #animated-text {
             margin-left: 30px;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         }
 
         img {
@@ -79,29 +82,76 @@
             width: 30%;
             border-radius: 100px;
             float: right;
-            margin-right: 15%;
+            margin-right: 8%;
             position: relative;
             bottom: 19em;
             border: 4px solid;
-            color: #981be6;
+            color: #0bf794;
             height: auto;
             object-fit: cover;
-            box-shadow: 0 0 15px;
+            box-shadow: 0 0 70px;
 
 
         }
 
         #btr {
-            background-color: blueviolet;
+            background-color: #0bf794;
             border-radius: 10px;
-            color: azure;
+            color: rgb(1, 36, 29);
+            padding: 10px 20px;
 
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            background-color: rgba(0, 0, 0, 0.5);
+            top: 0;
+            left: 0;
+            width: 90%;
+            height: 90%;
 
 
         }
 
+        .modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            border-radius: 10px;
+            padding: 20px;
+            width: 90%;
+            max-width: 600px;
+            height: 80px;
+
+
+        }
+
+        .close {
+            float: right;
+            font-size: 50px;
+            cursor: pointer;
+            background-color: #0bf794;
+
+        }
+
+        #iframe {
+            margin-top: 2%;
+            margin-left: 5%;
+            margin-right: 10%;
+            height: 500px;
+            width: 90%;
+
+        }
+
         #btr:hover {
-            color: rgb(46, 46, 45)
+            color: rgb(235, 241, 234)
+        }
+
+        .bac {
+            color: rgb(245, 248, 248);
+            ;
+            margin-left: 50%;
         }
 
         #btg {
@@ -124,7 +174,7 @@
 
         }
 
-        @media (max-width:768px) {
+        @media (max-width:1200px) {
             .container {
                 width: 90px;
 
@@ -142,7 +192,7 @@
         <button id="contact" onclick="window.location.href='contact.html'">contact</button>
     </nav>
     <br>
-    <div class="logo">Nova-corp</div>
+    <div class="logo">NovaTex-corp</div>
     <br>
     <br>
     <br>
@@ -153,7 +203,7 @@
 
     <p>Hi there am ugo
     </p>
-    <h2>Frontend & <br>
+    <h2 id="animated-text">web Designer & <br>
         mobile app developer</h2>
     <p>I develop mobile app for both <br>
         ios and android operating systems with <br>
@@ -162,12 +212,67 @@
     <p id="nt">Feel free to explore my portfolio and reach out,<br>I'd love to connect
     </p>
     <div class="underbtn">
-        <button id="btr">book a call</button> <button id="btg" onclick="window.location.href='project.html'">Get
-            started</button>
+        <button id="btr">let's talk</button>
+        <div id="callmodal" class="modal">
+            <div class="modal-cotent">
+                <span id="closemodal" class="close">&times;</span>
+                <h2 class="bac">book a call</h2>
+                <iframe id="iframe" src="https://calendly.com/preciouskwubeghari/30min"></iframe>
+            </div>
+        </div>
+        <button id="btg" onclick="window.location.href='project.html'">View Projects</button>
+
     </div>
 
 
     <script>
+
+        const openmodal = document.getElementById('btr')
+        const modal = document.getElementById('callmodal')
+        const close = document.getElementById("closemodal")
+        openmodal.onclick = () => { modal.style.display = 'block'; }
+            ;
+        closemodal.onclick = () => { modal.style.display = 'none'; }
+
+
+        const text = "web Designer & mobile app developer";
+        const typingspeed = 120;
+        const deletingspeed = 70;
+        const pausetime = 2000;
+        let charIndex = 0
+        let isdeleting = false
+        const TypingTextElement = document.getElementById('animated-text')
+
+
+        function typeEffect() {
+            const currentText = isdeleting
+                ? text.substring(0, charIndex - 1)
+                : text.substring(0, charIndex + 1);
+
+            TypingTextElement.textContent = currentText;
+
+            if (!isdeleting) {
+                if (charIndex === text.length) {
+                    isdeleting = true;
+                    setTimeout(typeEffect, pausetime);
+                    return;
+                }
+                charIndex++;
+                setTimeout(typeEffect, typingspeed)
+            }
+            else {
+                if (charIndex === 0) {
+
+                    isdeleting = false;
+                }
+                charIndex--;
+                setTimeout(typeEffect, deletingspeed);
+            }
+
+        }
+        window.onload = function () {
+            typeEffect();
+        }
 
 
     </script>
