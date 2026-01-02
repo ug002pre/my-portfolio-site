@@ -66,6 +66,4 @@ app.post('/send-email', async (req, res) => {
 });
 
 // Start server
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+export default app;//export the app - vercel handles it
