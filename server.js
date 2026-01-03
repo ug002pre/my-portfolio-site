@@ -25,8 +25,12 @@ app.use(express.json());
 app.use(express.urlencoded({extented:true }));
 
 //serves the existing static website files
-app.use(express.static(__dirname));
+app.use(express.static('public'));
 
+
+app,get('/', (req, res)=>{
+  res.sendfile(path.join(__dirname, 'index.html'))
+});
 
 //backend point to send email
 app.post('/send-email', async (req, res) => {
