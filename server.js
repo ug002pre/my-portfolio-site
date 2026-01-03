@@ -25,10 +25,10 @@ app.use(express.json());
 app.use(express.urlencoded({extented:true }));
 
 //serves the existing static website files
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 
-app,get('/', (req, res)=>{
+app.get('/', (req, res)=>{
   res.sendfile(path.join(__dirname, 'index.html'))
 });
 
