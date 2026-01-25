@@ -5,244 +5,1070 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
+        /* ...existing base styles... (unchanged) */
+        * {
+            scroll-behavior: smooth;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            border: none;
+            outline: none;
+        }
+
+        :root {
+            --bg-color: #080808;
+            --second-bg-color: #131313;
+            --text-color: white;
+            --main-color: #00ffee;
+        }
+
+        html {
+            font-size: 60%;
+            overflow-x: hidden;
+        }
+
         #container {
-            background-color:rgb(1, 36, 36);
-            font: 1em sans-serif;
-            margin: auto;
-            width: 90%;
-            max-width: 1200px;
-       }
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
 
-        #navigationbar {
-
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            font-size: large;
-            z-index: 1000;
-            box-shadow: 0 2px 4px;
+        header {
+            position: fixed;
+            width: 100%;
             top: 0;
-            padding: 10px 20px;
-            color: rgba(0, 0, 0, 0.1);
-            position: sticky;
-            font: sans-serif;
+            left: 0;
+            padding: 2rem 15%;
+            background-color: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 5;
+        }
+
+        #menu-icon {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
         }
 
         .logo {
-            display: grid;
+            font-size: 2rem;
+            cursor: pointer;
+            font-weight: 800;
+            color: var(--text-color);
+            transition: 0.3s ease-in-out;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+        }
+
+        span {
+            text-shadow: 0 03px var(--main-color);
+        }
+
+        .navigation-bar a {
+            color: var(--text-color);
+            margin-left: 4rem;
+            font-size: 1.2rem;
+            font-weight: 500;
+            transition: 0.3s ease-in-out;
+            border-bottom: 3px solid transparent;
+        }
+
+        .navigation-bar a:hover,
+        .navigation-bar a:active {
+            color: var(--main-color);
+            border-bottom: 3px solid var(--main-color);
+        }
+
+        section {
+            min-height: 100vh;
+            padding: 10rem 12% 10rem;
+        }
+
+        .home {
+            display: flex;
             align-items: center;
-
-            padding: 25px;
-            block-size: 4cap;
-            font-variant: small-caps;
-            color: #fff;
-
+            justify-content: center;
+            gap: 15rem;
         }
 
-        button {
-            background-color: none;
-            border: none;
-            padding: 0;
-            font-size: inherit;
-            cursor: pointer;
-            color: #0bf794;
-            background-color: rgb(1, 36, 29);
+        .home-content {
+            display: flex;
+            flex-direction: column;
+            align-items: baseline;
+            text-align: left;
+            justify-content: center;
+            margin-top: 3rem;
         }
 
-        button:hover {
-            color: rgb(86, 86, 83)
+        .home-content span {
+            color: var(--main-color);
         }
 
-        h2 {
-            color: #0bf794;
+        .home-content p {
+            font-size: 1.5rem;
+            font-weight: 500;
+            line-height: 1.8;
+            max-width: 1000px;
         }
 
-        p {
-            font-size: larger;
-            margin-left: 30px;
-            max-width: 400px;
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-            color: white;
-
+        .home-content h1 {
+            font-size: 7rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            line-height: 1;
         }
 
-        #animated-text {
-            margin-left: 30px;
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-            hyphens: auto;
-
-            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        .home-content h3 {
+            margin-bottom: 2rem;
+            margin-top: 1rem;
+            font-size: 3.2rem;
         }
 
-        img {
-            display: grid;
-            flex-wrap: wrap;
-            width: 30%;
-            border-radius: 100px;
-            float: right;
-            margin-right: 8%;
+        .home-content h1 span {
+            color: var(--main-color);
+        }
+
+        .home-content h3 {
+            margin: 1rem 0;
+            font-size: 3rem;
+        }
+
+        .home-img {
+            border-radius: 35%;
+        }
+
+        .home-img img {
             position: relative;
-            bottom: 19em;
-            border: 4px solid;
-            color: #0bf794;
-            height: auto;
-            object-fit: cover;
-            box-shadow: 0 0 70px;
-
-
-        }
-
-        #btr {
-            background-color: #0bf794;
-            border-radius: 10px;
-            color: rgb(1, 36, 29);
-            padding: 10px 20px;
-
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            background-color: rgba(0, 0, 0, 0.5);
-            top: 0;
-            left: 0;
-            width: 90%;
-            height: 90%;
-
-
-        }
-
-        .modal-content {
-            background-color: #fff;
-            margin: 10% auto;
-            border-radius: 10px;
-            padding: 20px;
-            width: 90%;
-            max-width: 600px;
-            height: 80px;
-
-
-        }
-
-        .close {
-            float: right;
-            font-size: 50px;
+            top: 3rem;
+            width: 32vw;
+            border-radius: 35%;
+            box-shadow: 0 0 25px var(--main-color);
             cursor: pointer;
-            background-color: #0bf794;
-
+            transition: 0.8s ease-in-out;
         }
 
-        #iframe {
-            margin-top: 2%;
-            margin-left: 5%;
-            margin-right: 10%;
-            height: 500px;
-            width: 90%;
-
+        .home-img img {
+            box-shadow: 0 0 25px var(--main-color),
+                0 0 50px var(--main-color),
+                0 0 100px var(--main-color);
         }
 
-        #btr:hover {
-            color: rgb(235, 241, 234)
+        .social-icons a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 4.2rem;
+            background: transparent;
+            border: 2px solid var(--main-color);
+            color: var(--main-color);
+            border-radius: 50%;
+            font-size: 3.2rem;
+            margin: 3rem 1.5rem 3rem 0;
+            transition: 0.3s ease-in-out;
         }
 
-        .bac {
-            color: rgb(245, 248, 248);
-            ;
-            margin-left: 50%;
+        .social-icons a:hover {
+            color: var(--text-color);
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 0 25px var(--main-color);
+            background-color: var(--main-color);
         }
 
-        #btg {
-
-            border: 2px solid;
-            padding: 1% 1.6rem;
-            border-radius: 10px;
+        .btn {
+            display: inline-block;
+            padding: 2rem 1.8rem;
+            margin: 2rem 1.5rem;
+            background: var(--main-color);
+            box-shadow: 0 0 25px var(--main-color);
+            border-radius: 4rem;
+            font-size: 1.8rem;
+            color: black;
+            border: 2px solid transparent;
+            letter-spacing: 0.1rem;
+            font-weight: 600;
+            transition: 0.3s ease-in-out;
+            cursor: pointer;
         }
 
-        .underbtn {
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50% var(--main-color);
+        }
+
+        .btn-group {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        #text-animation {
+            color: var(--main-color);
+        }
+
+        .btn-group a:nth-of-type(2) {
+            background-color: black;
+            color: var(--main-color);
+            border: 2px solid var(--main-color);
+            box-shadow: 0 0 25px transparent;
+        }
+
+        .btn-group a:nth-of-type(2):hover {
+            box-shadow: 0 0 25px var(--main-color);
+            background-color: var(--main-color);
+            color: var(--second-bg-color);
+        }
+
+        .heading {
+            font-size: 8rem;
+            text-align: center;
+            margin: 5rem 0;
+        }
+
+        .about {
+            padding: 100px 15px;
+            background: var(--second-bg-color);
+        }
+
+        .about h2 {
+            margin-bottom: 5rem;
+        }
+
+        .timeline-items {
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            flex-wrap: wrap;
+            position: relative;
+        }
+
+        .timeline-items::before {
+            content: "";
+            position: absolute;
+            width: 5px;
+            height: 100%;
+            background-color: var(--main-color);
+            left: calc(50% - 1px);
+        }
+
+        .timeline-item {
+            margin-bottom: 40px;
+            width: 100%;
+            position: relative;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-item:nth-child(odd) {
+            padding-right: calc(50% + 30px);
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            padding-left: calc(50% + 30px);
+        }
+
+        .timeline-dot {
+            height: 21px;
+            width: 21px;
+            background-color: var(--main-color);
+            box-shadow: 0 0 25px var(--main-color),
+                0 0 50px var(--main-color);
+            position: absolute;
+            left: calc(50% - 8px);
+            border-radius: 50%;
+            top: 10px;
+        }
+
+        .timeline-date {
+            font-size: 20px;
+            font-weight: 800;
+            color: white;
+            margin: 6px 0 15px;
+        }
+
+        .timeline-content {
+            background-color: var(--bg-color);
+            border: 3px solid var(--main-color);
+            padding: 30px 50px;
+            border-radius: 4rem;
+            transition: 0.3s ease-in-out;
+            cursor: pointer;
+            box-shadow: 0 0 10px var(--main-color);
+        }
+
+        .timeline-content:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px var(--main-color);
+        }
+
+        .timeline-content h3 {
+            font-size: 20px;
+            font-weight: 500;
+            color: white;
+            margin: 0 0 10px;
+        }
+
+        .timeline-content p {
+            font-size: 16px;
+            font-weight: 300;
+            color: white;
+            line-height: 22px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 15px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: var(--bg-color);
+            width: 50px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--main-color);
+        }
+
+        .projects {
+            background-color: var(--bg-color);
+        }
+
+        .project-box {
+            display: grid;
+            gap: 4rem;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            place-items: center;
+            row-gap: 5rem;
+        }
+
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: var(--bg-color);
+            border: 2px solid var(--main-color);
+            border-radius: 3rem;
+            gap: 2rem;
+            overflow: hidden;
+            padding: 5rem 2rem;
+            cursor: pointer;
+            box-shadow: 0 0 5px var(--main-color);
+            transition: 0.3s ease-in-out;
+        }
+
+        .project-card:hover {
+            box-shadow: 0 0 25px var(--main-color),
+                0 0 50px var(--main-color);
+            transform: scale(1.08);
+        }
+
+        .project-card img {
+            max-width: 300px;
+            border-radius: 2rem;
+            object-fit: cover;
+        }
+
+        .project-card h3 {
+            font-size: 3rem;
+        }
+
+        .project-card p {
+            font-size: 1.6rem;
+        }
+
+        .services {
+            background-color: var(--second-bg-color);
+            color: black;
+        }
+
+        .services h2 {
+            margin-bottom: 5rem;
+            color: white;
+        }
+
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .services-box {
+            background-color: var(--main-color);
+            height: 300px;
+            border-radius: 3rem;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: 0.4s ease-in-out;
+        }
+
+        .services-box:hover {
+            background: white;
+            color: black;
+            border: 5px solid var(--main-color);
+            transform: scale(1.03);
+        }
+
+        .services-box .services-info {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            max-height: 200px;
+            justify-content: left;
+            align-items: baseline;
+            padding: 5rem 5rem;
+        }
+
+        .services-info h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 2;
+        }
+
+        .services-info p {
+            font-size: 1.6rem;
+            font-weight: 600;
+            max-height: 100px;
+            line-height: 1.7;
+            margin: auto;
+        }
+
+        #contact-form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            margin: 5rem auto;
+            text-align: center;
+        }
+
+        .contact {
+            background: var(--bg-color);
+        }
+
+        #contact-form .input-box {
             display: flex;
             justify-content: center;
-            gap: 0.5rem;
-            padding: 2rem 1.5rem;
-            margin-top: 1.5rem;
-            white-space: nowrap;
             flex-wrap: wrap;
-            position: absolute;
-
-
         }
 
-        @media (max-width:1200px) {
-            .container {
-                width: 90px;
+        #contact-form .input-box input,
+        #contact-form textarea {
+            width: 90%;
+            padding: 2.2rem;
+            font-size: 1.8rem;
+            color: var(--text-color);
+            background: var(--bg-color);
+            border-radius: 2rem;
+            border: 2px solid var(--main-color);
+            margin: 1.2rem 0;
+            resize: none;
+        }
 
+        #btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            margin: 2rem 1.5rem;
+            background: var(--main-color);
+            box-shadow: 0 0 25px var(--main-color);
+            border-radius: 4rem;
+            font-size: 1.8rem;
+            color: black;
+            border: 2px solid transparent;
+            letter-spacing: 0.1rem;
+            font-weight: 600;
+            transition: 0.3s ease-in-out;
+            cursor: pointer;
+        }
+
+        #btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 50% var(--main-color);
+        }
+
+        .iconB {
+            display: flex;
+            justify-content: space-around;
+            text-shadow: 0 0 10px var(--main-color);
+            font-size: 3.2rem;
+        }
+
+        .iconB:hover {
+            color: var(--text-color);
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 0 25px var(--main-color);
+            background-color: var(--main-color);
+        }
+
+        footer {
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            padding: 40px 0;
+            background-color: var(--second-bg-color);
+        }
+
+        .footer .iconB {
+            text-align: center;
+            padding-bottom: 29px;
+            color: var(--main-color);
+        }
+
+        .footer .iconB i {
+            font-size: 25px;
+            height: 42px;
+            width: 42px;
+            color: var(--main-color);
+            line-height: 42px;
+            border: 2px solid var(--main-color);
+            display: inline-block;
+            text-align: center;
+            border-radius: 50%;
+            margin: 0 10px;
+            transition: 0.3s ease-in-out;
+        }
+
+        .footer .iconB:hover {
+            transform: scale(1.2) translateX(-10px);
+            color: black;
+            box-shadow: 0 0 25px var(--main-color);
+            background-color: var(--main-color);
+        }
+
+        .footer ul {
+            margin-top: 0;
+            padding: 0;
+            line-height: 1.6;
+            margin-bottom: 0;
+            font-size: 10px;
+            text-align: center;
+        }
+
+        .footer ul li a {
+            color: white;
+            border-bottom: 3px solid transparent;
+            transition: 0.3s ease-in-out;
+        }
+
+        .footer ul li a:hover {
+            border-bottom: 3px solid var(--main-color);
+        }
+
+        .footer ul li {
+            display: inline-block;
+            padding: 0 15px;
+        }
+
+        .footer .copyright {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 16px;
+            color: aliceblue;
+        }
+
+        /* RESPONSIVE RULES */
+        @media (max-width: 1285px) {
+            html {
+                font-size: 55%;
+            }
+
+            .services-container {
+                padding-bottom: 7rem;
+                grid-template-columns: repeat(2, 1fr);
+                margin: 0 5rem;
+            }
+        }
+
+        @media (max-width: 991px) {
+            header {
+                padding: 1.2rem 4%;
+            }
+
+            section {
+                padding: 8rem 4% 2rem;
+            }
+
+            .navigation-bar {
+                display: none;
+            }
+
+            .timeline-item:nth-child(odd) {
+                padding-right: 0;
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                padding-left: 37px;
+            }
+
+            .timeline-dot {
+                left: 0;
+            }
+
+            .services {
+                padding-bottom: 7rem;
+            }
+
+            #contact-form {
+                flex-direction: column;
+                padding: 0 2rem;
+            }
+
+            .footer {
+                padding: 2rem 3%;
+            }
+
+            .project-box {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 895px) {
+            #menu-icon {
+                display: block;
+            }
+
+            .navigation-bar {
+                position: absolute;
+                top: 72px;
+                right: 0;
+                width: 70%;
+                padding: 1.5rem;
+                background: rgba(0, 0, 0, 0.95);
+                backdrop-filter: blur(12px);
+                border-bottom-left-radius: 2rem;
+                border-left: 2px solid var(--main-color);
+                border-bottom: 2px solid var(--main-color);
+                display: none;
+            }
+
+            .navigation-bar.active {
+                display: block;
+            }
+
+            .navigation-bar a {
+                display: block;
+                font-size: 1.8rem;
+                color: white;
+                margin: 1.6rem 0;
+            }
+
+            .home {
+                flex-direction: column-reverse;
+                margin: 5rem 2rem;
+                gap: 3rem;
+            }
+
+            .home-content p {
+                max-width: 90%;
+                margin: 0 auto;
+            }
+
+            .home-img img {
+                width: 60vw;
+            }
+
+            .services h2 {
+                margin-bottom: 3rem;
+            }
+
+            .services-container {
+                grid-template-columns: 1fr;
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            html {
+                font-size: 50%;
+            }
+
+            header {
+                padding: 1rem 3%;
+            }
+
+            .home-content h1 {
+                font-size: 4.5rem;
+            }
+
+            .home-content h3 {
+                font-size: 2.2rem;
+            }
+
+            .heading {
+                font-size: 5rem;
+            }
+
+            .home-img img {
+                width: 80vw;
+                top: 1.5rem;
+            }
+
+            .btn {
+                padding: 1rem 1.2rem;
+                font-size: 1.6rem;
+            }
+
+            .services-box .services-info {
+                padding: 3rem 2rem;
+            }
+
+            .timeline-content {
+                padding: 2rem;
+            }
+
+            #contact-form .input-box input,
+            #contact-form textarea {
+                font-size: 1.6rem;
+                padding: 1.4rem;
             }
         }
     </style>
 </head>
 
 <body id="container">
+    <header>
+        <a href="index.html" class="logo">
+            <span>viten</span>corp
+        </a>
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+        <nav class="navigation-bar">
+            <a href="index.html">Home</a>
+            <a href="#about">About</a>
+            <a href="#projects">Projects</a>
+            <a href="#services">Services</a>
+            <a href="#contact-form">Contact</a>
+        </nav>
+    </header>
+    <section class="home" id="hero">
+        <div class="home-content">
+            <h1>Hi, it's <span>ugo</span></h1>
+            <h3 id="text-animation">
 
-    <nav id="navigationbar">
-        <button id="home" onclick="window.location.href='index.html'">Home</button>
-        <button id="project" onclick="window.location.href='project.html'">projects</button>
-        <button id="about" onclick="window.location.href='about.html'">About</button>
-        <button id="contact" onclick="window.location.href='contact.html'">contact</button>
-    </nav>
-    <br>
-    <div class="logo">NovaTex-corp</div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+            </h3>
+            <p>
+                Lorem ipsum dolor sit, amet consectetur
+                adipisicing elit. Exercitationem quisquam,
+                similique consectetur fuga id provident deleniti vero,
+                magnam totam alias tempora? Velit ad aut odio. Tenetur
+                iste praesentium maiores cumque.
+            </p>
+            <div class="social-icons">
+                <a href='https://x.com/KwubeghariP'>
+                    <i class="fa-brands fa-twitter"></i>
+                </a>
 
+                <a href='https://github.com/ug002pre'>
+                    <i class="fa-brands fa-github"></i>
+                </a>
 
+                <a href='https://www.facebook.com/profile.php?id=100076375631426'>
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
 
-    <p>Hi there am ugo
-    </p>
-    <h2 id="animated-text">web Designer & <br>
-        mobile app developer</h2>
-    <p>I develop mobile app for both <br>
-        ios and android operating systems with <br>
-        elegant and functional frontends</p>
-    <img src="profile.jpg">
-    <p id="nt">Feel free to explore my portfolio and reach out,<br>I'd love to connect
-    </p>
-    <div class="underbtn">
-        <button id="btr">let's talk</button>
-        <div id="callmodal" class="modal">
-            <div class="modal-cotent">
-                <span id="closemodal" class="close">&times;</span>
-                <h2 class="bac">book a call</h2>
-                <iframe id="iframe" src="https://calendly.com/preciouskwubeghari/30min"></iframe>
+                <a href='https://wa.me/07076135787'>
+                    <i class="fa-brands fa-whatsapp"></i>
+                </a>
+            </div>
+
+            <div class="btn-group">
+                <a href="#" class="btn">Book a call</a>
+                <a href="contact.html" class="btn">Contact</a>
             </div>
         </div>
-        <button id="btg" onclick="window.location.href='project.html'">View Projects</button>
 
+        <div class="home-img">
+            <img src="profile.jpg" alt="">
+        </div>
+
+    </section>
+
+    <section class="about" id="about">
+        <h2 class="heading">About Me</h2>
+
+        <div class="timeline-items">
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">
+                    2023
+                </div>
+                <div class="timeline-content">
+                    <h3>high school</h3>
+                    <p>
+                      I attended Federal government college minna,
+                       from 2018 to 2023 as a technical student
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">
+                    2024
+                </div>
+                <div class="timeline-content">
+                    <h3>university</h3>
+                    <p>
+I am currently a student of Caritas University Amorji-Nike , 
+Am a student of computer engineering from 2024 t0 2028
+
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">
+                    2023
+                </div>
+                <div class="timeline-content">
+                    <h3>job 1</h3>
+                    <p>
+                        currently working with a startup agency called talent bridge
+                        as a Fullstack web developer.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-date">
+                    2024
+                </div>
+                <div class="timeline-content">
+                    <h3>jobs</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Culpa atque quam, asperiores consequuntur sunt alias nesciunt
+                        quibusdam ratione obcaecati non quas natus,
+                        ea veniam expedita,
+                        sit maiores aspernatur nemo eveniet.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+    <section class="projects" id="projects">
+        <h2 class="heading">Projects</h2>
+        <div class="project-box">
+            <div class="project-card">
+                <img src="frenzy3.jpg" alt="">
+                <h3>project 1</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Quod, officiis expedita, recusandae earum rerum magni tempore
+                    corporis explicabo ratione natus? In,
+                    id laboriosam pariatur cupiditate explicabo earum rem fugit.</p>
+            </div>
+
+
+
+            <div class="project-card">
+                <img src="frenzy3.jpg" alt="">
+                <h3>project 2</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Quod, officiis expedita, recusandae earum rerum magni tempore
+                    corporis explicabo ratione natus? In,
+                    id laboriosam pariatur cupiditate explicabo earum rem fugit.</p>
+            </div>
+
+            <div class="project-card">
+                <img src="frenzy3.jpg" alt="">
+                <h3>project 3</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Quod, officiis expedita, recusandae earum rerum magni tempore
+                    corporis explicabo ratione natus? In,
+                    id laboriosam pariatur cupiditate explicabo earum rem fugit.</p>
+            </div>
+
+            <div class="project-card">
+                <img src="frenzy3.jpg" alt="">
+                <h3>project 3</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Quod, officiis expedita, recusandae earum rerum magni tempore
+                    corporis explicabo ratione natus? In,
+                    id laboriosam pariatur cupiditate explicabo earum rem fugit.</p>
+            </div>
+
+            <div class="project-card">
+                <img src="frenzy3.jpg" alt="">
+                <h3>project 3</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Quod, officiis expedita, recusandae earum rerum magni tempore
+                    corporis explicabo ratione natus? In,
+                    id laboriosam pariatur cupiditate explicabo earum rem fugit.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <h2 class="heading"> services</h2>
+        <div class="services-container">
+
+            <div class="services-box">
+                <div class="services-info">
+                    <h2>Frontend Development</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Dignissimos cum repellendus, iste consequatur,
+                        illum necessitatibus dicta quis quia explicabo ab optio.
+                        Distinctio
+                        magni repudiandae repellendus ex culpa quidem est sequi.</p>
+                </div>
+            </div>
+
+            <div class="services-box">
+                <div class="services-info">
+                    <h2>Backend Development</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Dignissimos cum repellendus, iste consequatur,
+                        illum necessitatibus dicta quis quia explicabo ab optio.
+                        Distinctio
+                        magni repudiandae repellendus ex culpa quidem est sequi.</p>
+                </div>
+            </div>
+
+            <div class="services-box">
+                <div class="services-info">
+                    <h2>Fullstack Development</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Dignissimos cum repellendus, iste consequatur,
+                        illum necessitatibus dicta quis quia explicabo ab optio.
+                        Distinctio
+                        magni repudiandae repellendus ex culpa quidem est sequi.</p>
+                </div>
+            </div>
+
+ <div class="services-box">
+                <div class="services-info">
+                    <h2>Testing</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Dignissimos cum repellendus, iste consequatur,
+                        illum necessitatibus dicta quis quia explicabo ab optio.
+                        Distinctio
+                        magni repudiandae repellendus ex culpa quidem est sequi.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+<section class="contact" id="contact-form">
+    <h2 class="heading">Contact <span id="contact-span"> Me</span></h2>
+                <form action="/send-email" method="post">
+                    <div class="input-group">
+                    <div class="input-box"> 
+                         <input type="text" id="name" placeholder="Name">
+                <br>
+                <input type="email" id="email" placeholder="Email">
+                <br>
+            </div>
+
+              <div class="input-box">
+                 <input type="number" id="number" placeholder="phone-number">
+                <br>
+                </div>
+                <div class="input-group2">
+                <textarea id="message" cols="30" rows="10" placeholder="message"></textarea>
+                </div>
+               
+                <button type="submit" id="btn">Send message</button>
+            </form>
+        </Section>
+<footer class="footer">
+     <div class="iconB">
+                <i class="fa-brands fa-twitter" onclick="window.location.href='https://x.com/KwubeghariP'"></i>
+                <i class="fa-brands fa-github" onclick="window.location.href='https://github.com/ug002pre'"></i> 
+                <i class="fa-brands fa-facebook" onclick="window.location.href='https://www.facebook.com/profile.php?id=100076375631426'"></i> 
+                   <i class="fa-brands fa-whatsapp" onclick="window.location.href='https://wa.me/07076135787'"></i>
+
+            </div>
+
+            <ul class="list">
+                <li>
+                   <a href="#">FAQ</a> 
+                </li>
+ <li>
+                   <a href="#">Services</a> 
+                </li> <li>
+                   <a href="#">About me</a> 
+                </li> <li>
+                   <a href="#">contact</a> 
+                </li>
+            </ul>
+            <p class="copyright">
+                K Ugo Precious | All Right reserved
+            </p>
+</footer>
     </div>
 
 
-    <script>
-
-        const openmodal = document.getElementById('btr')
-        const modal = document.getElementById('callmodal')
-        const close = document.getElementById("closemodal")
-        openmodal.onclick = () => { modal.style.display = 'block'; }
-            ;
-        closemodal.onclick = () => { modal.style.display = 'none'; }
 
 
-        const text = "web Designer & mobile app developer";
+
+
+</section>
+    
+    <script type="module">
+        document.getElementById('contact-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                number: document.getElementById('number').value,
+                message: document.getElementById('message').value,
+            
+            };
+
+            try {
+                const response = await fetch('/send-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(formData),
+                });
+
+                const result = await response.json();
+                alert(result.message);
+                if (result.success) e.target.reset();
+            } catch (err) {
+                alert('Network error');
+            }
+        });
+
+        // typing effect (unchanged)
+        const text = " am a web & mobile app developer";
         const typingspeed = 120;
         const deletingspeed = 70;
         const pausetime = 2000;
         let charIndex = 0
         let isdeleting = false
-        const TypingTextElement = document.getElementById('animated-text')
-
+        const TypingTextElement = document.getElementById('text-animation')
 
         function typeEffect() {
             const currentText = isdeleting
@@ -259,22 +1085,25 @@
                 }
                 charIndex++;
                 setTimeout(typeEffect, typingspeed)
-            }
-            else {
+            } else {
                 if (charIndex === 0) {
-
                     isdeleting = false;
                 }
                 charIndex--;
                 setTimeout(typeEffect, deletingspeed);
             }
-
         }
         window.onload = function () {
             typeEffect();
         }
 
-
+        // MENU TOGGLE for small screens
+        const menuIcon = document.getElementById('menu-icon');
+        const nav = document.querySelector('.navigation-bar');
+        if (menuIcon && nav) {
+            menuIcon.addEventListener('click', () => nav.classList.toggle('active'));
+            nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('active')));
+        }
     </script>
 </body>
 

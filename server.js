@@ -45,6 +45,7 @@ app.post('/send-email', async (req, res) => {
     const templateParams = {
       name,
       email,
+      number,
       message,
       // Add more variables to match your EmailJS template
     };
