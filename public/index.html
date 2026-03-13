@@ -978,23 +978,25 @@ Am a student of computer engineering from 2024 t0 2028
     </section>
 
 
-<section class="contact" id="contact-form">
+<section class="contact" id="contact-section">
     <h2 class="heading">Contact <span id="contact-span"> Me</span></h2>
-                <form action="/send-email" method="post">
+                <!-- FIX: Added id="contact-form" to the <form> so the JS listener targets it correctly -->
+                <form id="contact-form" action="/send-email" method="post">
                     <div class="input-group">
                     <div class="input-box"> 
-                         <input type="text" id="name" placeholder="Name">
+                         <!-- FIX: Added name attributes so form fields are submitted -->
+                         <input type="text" id="name" name="name" placeholder="Name">
                 <br>
-                <input type="email" id="email" placeholder="Email">
+                <input type="email" id="email" name="email" placeholder="Email">
                 <br>
             </div>
 
               <div class="input-box">
-                 <input type="number" id="number" placeholder="phone-number">
+                 <input type="number" id="number" name="number" placeholder="phone-number">
                 <br>
                 </div>
                 <div class="input-group2">
-                <textarea id="message" cols="30" rows="10" placeholder="message"></textarea>
+                <textarea id="message" name="message" cols="30" rows="10" placeholder="message"></textarea>
                 </div>
                
                 <button type="submit" id="btn">Send message</button>
@@ -1034,7 +1036,7 @@ Am a student of computer engineering from 2024 t0 2028
 
 </section>
     
-    <script type="module">
+    <script>
         document.getElementById('contact-form').addEventListener('submit', async (e) => {
             e.preventDefault();
 
@@ -1105,6 +1107,7 @@ Am a student of computer engineering from 2024 t0 2028
             nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('active')));
         }
     </script>
+    
 </body>
 
 </html>
